@@ -1,5 +1,5 @@
 {
-    "name": "drupal/furry_octo_bassoon",
+    "name": "wunderio/furry_octo_bassoon",
     "description": "Exposes the client IP to DrupalSettings in Javascript.",
     "type": "drupal-module",
     "homepage": "https://github.com/wunder.io/furry_octo_bassoon",
