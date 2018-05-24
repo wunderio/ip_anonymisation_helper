@@ -1,0 +1,13 @@
+<?php
+
+use Symfony\Component\HttpFoundation;
+
+/**
+ * Implements template_preprocess_html().
+ */
+function furry_octo_bassoon_preprocess_html(&$variables) {
+  // Get the client IP
+  $client_ip = \Drupal::request()->getClientIp();
+  // Expose the client IP in drupalSettings in Javascript.
+  $variables['#attached']['drupalSettings']['furry_octo_bassoon']['client_ip'] = $client_ip;
+}

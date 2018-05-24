@@ -1,0 +1,7 @@
+name: Furry Octo Bassoon
+description: Exposes the client IP to DrupalSettings in Javascript.
+package: Custom
+type: module
+core: 8.x
+dependencies:
+  - core/drupalSettings
