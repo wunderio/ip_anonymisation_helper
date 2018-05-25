@@ -8,11 +8,11 @@ use Symfony\Component\HttpFoundation;
 function furry_octo_bassoon_preprocess_html(&$variables) {
   // Only expose the client IP if it's enabled.
   $config = \Drupal::config('furry_octo_bassoon.settings');
-  $expose_client_ip = $config->get('expose_client_ip');
+  $expose_client_ip = $config->get('expose_client_ips');
   if ($expose_client_ip == true) {
     // Get the client IP
-    $client_ip = \Drupal::request()->getClientIp();
+    $client_ips = \Drupal::request()->getClientIps();
     // Expose the client IP in drupalSettings in Javascript.
-    $variables['#attached']['drupalSettings']['furry_octo_bassoon']['client_ip'] = $client_ip;
+    $variables['#attached']['drupalSettings']['furry_octo_bassoon']['client_ips'] = json_encode($client_ips);
   }
 }

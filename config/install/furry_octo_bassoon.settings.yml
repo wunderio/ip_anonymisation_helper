@@ -1,1 +1,1 @@
-expose_client_ip: true
+expose_client_ips: true
