@@ -1,19 +1,25 @@
 <?php
 
-use Symfony\Component\HttpFoundation;
-
 /**
- * Implements template_preprocess_html().
+ * Implements hook_page_attachments().
  */
-function furry_octo_bassoon_preprocess_html(&$variables) {
+function furry_octo_bassoon_page_attachments(array &$page) {
   // Only expose the client IP if it's enabled.
   $config = \Drupal::config('furry_octo_bassoon.settings');
   $expose_client_ip = $config->get('expose_client_ip');
-  if ($expose_client_ip == true) {
-    // Get the client IP
+  if ($expose_client_ip == TRUE) {
+    // Get the client IP.
     $client_ip = _furry_octo_bassoon_get_client_ip();
-    // Expose the client IP in drupalSettings in Javascript.
-    $variables['#attached']['drupalSettings']['furry_octo_bassoon']['client_ip'] = $client_ip;
+
+    // Expose the client IP in the head section as a script tag.
+    $description = [
+      '#tag' => 'script',
+      '#attributes' => [
+        'name' => 'furry_octo_bassoon_client_ip',
+        'content' => $client_ip,
+      ],
+    ];
+    $page['#attached']['html_head'][] = [$description, 'description'];
   }
 }
 
@@ -21,17 +27,18 @@ function furry_octo_bassoon_preprocess_html(&$variables) {
  * Custom helper function to get the real client IP.
  */
 function _furry_octo_bassoon_get_client_ip() {
-    // Prioritise IP from proxy.
-    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-      $ip_address = $_SERVER['HTTP_CLIENT_IP'];
-    }
-    // Next prioritise IP from proxy in another format.
-    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-      $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    }
-    // If all else fails, use the remote client IP.
-    else {
-      $ip_address = $_SERVER['REMOTE_ADDR'];
-    }
-    return $ip_address;
+  // Prioritise IP from proxy.
+  if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip_address = $_SERVER['HTTP_CLIENT_IP'];
   }
+  // Next prioritise IP from proxy in another format.
+  elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+  }
+  // If all else fails, use the remote client IP.
+  else {
+    // @codingStandardsIgnoreLine
+    $ip_address = $_SERVER['REMOTE_ADDR'];
+  }
+  return $ip_address;
+}
