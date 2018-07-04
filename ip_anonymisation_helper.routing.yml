@@ -1,0 +1,8 @@
+ip_anonymisation_helper.client_ip:
+  path: '/ip_anonymisation_helper/client_ip'
+  defaults:
+    _controller: '\Drupal\ip_anonymisation_helper\Controller\IpAnonymisationController::getClientIp'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
