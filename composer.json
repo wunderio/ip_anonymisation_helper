@@ -1,8 +1,8 @@
 {
-    "name": "wunderio/furry_octo_bassoon",
+    "name": "wunderio/ip_anonymisation_helper",
     "description": "Exposes the client IP to DrupalSettings in Javascript.",
     "type": "drupal-module",
-    "homepage": "https://github.com/wunder.io/furry_octo_bassoon",
+    "homepage": "https://github.com/wunder.io/ip_anonymisation_helper",
     "authors": [
         {
             "name": "Aleksi Johansson (aleksijohansson)",
@@ -11,8 +11,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/wunderio/furry_octo_bassoon/issues",
-        "source": "https://github.com/wunder.io/furry_octo_bassoon"
+        "issues": "https://github.com/wunderio/ip_anonymisation_helper/issues",
+        "source": "https://github.com/wunder.io/ip_anonymisation_helper"
     },
     "license": "GPL-2.0+"
 }
