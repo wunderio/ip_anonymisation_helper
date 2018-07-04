@@ -1,6 +1,6 @@
 {
     "name": "wunderio/ip_anonymisation_helper",
-    "description": "Exposes the client IP to DrupalSettings in Javascript.",
+    "description": "Exposes the client IP.",
     "type": "drupal-module",
     "homepage": "https://github.com/wunder.io/ip_anonymisation_helper",
     "authors": [
