@@ -1,4 +1,4 @@
 # ip_anonymisation_helper
-A Drupal 8 module that exposes the client IP to the head section as a script tag in order to filter internal traffic out of analytics while still anonymising the visitor IP stored in analytics.
+A Drupal 8 module that exposes the client IP to `/ip_anonymisation_helper/client_ip` path to be used to filter internal traffic out of analytics while still anonymising the visitor IP stored in analytics.
 
-Uses a custom function for a best guess of the IP instead of relying on [`Request::getClientIp`](https://api.drupal.org/api/drupal/vendor%21symfony%21http-foundation%21Request.php/function/Request%3A%3AgetClientIp/8.5.x) nor [`Request::getClientIps`](https://api.drupal.org/api/drupal/vendor%21symfony%21http-foundation%21Request.php/function/Request%3A%3AgetClientIps/8.5.x) because those seem to be unreliable and returning the host server IP instead of the client IP in some cases.
+The separate path is used instead of exposing the IP on the page as markup so that's simpler to set as not to be cached compared to a part of markup of a page for example.
