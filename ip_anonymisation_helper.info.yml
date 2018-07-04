@@ -1,5 +1,5 @@
-name: Furry Octo Bassoon
-description: Exposes the client IP to DrupalSettings in Javascript.
+name: IP Anonymisation Helper
+description: Exposes the client IP.
 package: Custom
 type: module
 core: 8.x
