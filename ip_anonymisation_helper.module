@@ -8,9 +8,8 @@ function ip_anonymisation_helper_page_attachments(array &$attachments) {
     [
       '#type' => 'html_tag',
       '#tag' => 'script',
-      '#attributes' => array('src' => '/' . drupal_get_path('module', 'ip_anonymisation_helper') . '/js/client_ip_fetcher.js'),
+      '#attributes' => array('src' => '/ip_anonymisation_helper/client_ip'),
     ],
-    // A key, to make it possible to recognize this HTML  element when altering.
-    'ip_anonymisation_helper_client_ip_fetcher',
+    'ip_anonymisation_helper_client_ip',
   ];
 }
