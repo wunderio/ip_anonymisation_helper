@@ -4,5 +4,14 @@
  * Implements hook_page_attachments().
  */
 function ip_anonymisation_helper_page_attachments(array &$page) {
-  $page['#attached']['library'][] = 'ip_anonymisation_helper/client_ip_fetcher';
+
+  $attachments['#attached']['html_head'][] = [
+    [
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#attributes' => array('src' => drupal_get_path('module', 'ip_anonymisation_helper') . '/js/client_ip_fetcher.js'),
+    ],
+    // A key, to make it possible to recognize this HTML  element when altering.
+    'ip_anonymisation_helper_client_ip_fetcher',
+  ];
 }
