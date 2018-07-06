@@ -51,16 +51,16 @@ class IpAnonymisationController extends ControllerBase {
   }
 
   /**
-   * Returns a client ip.
+   * Returns the client IP address.
    */
   public function getClientIp() {
     // Only expose the client IP if it's enabled.
     $expose_client_ip = $this->config->get('expose_client_ip');
     if ($expose_client_ip == TRUE) {
       $client_ip = $this->request->getClientIp();
-      return new JsonResponse([
-        'client_ip' => $client_ip,
-      ]);
+      $response = new Response('dataLayer = dataLayer || []; dataLayer.push({"client_ip": "' . $client_ip . '"});');
+      $response->headers->set('Content-Type','text/javascript');
+      return $response;
     }
     else {
       $response = new JsonResponse();
