@@ -1,3 +1,4 @@
 client_ip_fetcher:
+  header: true
   js:
-    js/client_ip_fetcher.js: { header: true }
+    js/client_ip_fetcher.js: {}
