@@ -2,3 +2,6 @@ client_ip_fetcher:
   header: true
   js:
     js/client_ip_fetcher.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
