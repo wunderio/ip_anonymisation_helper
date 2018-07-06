@@ -4,8 +4,9 @@
   xhr.open('GET', '/ip_anonymisation_helper/client_ip');
   xhr.onload = function() {
     if (xhr.status === 200) {
-      // Expose the client IP to a global variable.
-      ip_anonymisation_helper = JSON.parse(xhr.responseText);
+      // Push the client IP directly to the dataLayer.
+      dataLayer = dataLayer || [];
+      dataLayer.push(JSON.parse(xhr.responseText));
     }
   };
   xhr.send();
