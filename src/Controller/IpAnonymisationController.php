@@ -59,6 +59,7 @@ class IpAnonymisationController extends ControllerBase {
     if ($expose_client_ip == TRUE) {
       $client_ip = $this->request->getClientIp();
       return new JsonResponse([
+        'event' => 'Client IP Received',
         'client_ip' => $client_ip,
       ]);
     }
