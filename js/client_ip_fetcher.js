@@ -1,11 +1,12 @@
-(function ($, Drupal) {
-  Drupal.behaviors.clientIpFetcher = {
-    attach: function () {
-      $.getJSON('/ip_anonymisation_helper/client_ip', function(data) {
-        drupalSettings.ip_anonymisation_helper = {
-          client_ip: data['client_ip']
-        };
-      });
+(function () {
+  var xhr = new XMLHttpRequest();
+  // Request the client IP from the endpoint made available by the module itself.
+  xhr.open('GET', '/ip_anonymisation_helper/client_ip');
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // Expose the client IP to a global variable.
+      ip_anonymisation_helper = JSON.parse(xhr.responseText);
     }
-  }
-})(jQuery, Drupal);
+  };
+  xhr.send();
+})();
