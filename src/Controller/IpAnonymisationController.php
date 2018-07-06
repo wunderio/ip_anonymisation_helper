@@ -58,8 +58,10 @@ class IpAnonymisationController extends ControllerBase {
     $expose_client_ip = $this->config->get('expose_client_ip');
     if ($expose_client_ip == TRUE) {
       $client_ip = $this->request->getClientIp();
-      $response = new Response('dataLayer = dataLayer || []; dataLayer.push({"client_ip": "' . $client_ip . '"});');
-      $response->headers->set('Content-Type','text/javascript');
+      $response = new Response('dataLayer = dataLayer || []; dataLayer.push({"client_ip": "' . $client_ip . '"});',
+        Response::HTTP_OK,
+        array('content-type' => 'text/javascript')
+      );
       return $response;
     }
     else {
