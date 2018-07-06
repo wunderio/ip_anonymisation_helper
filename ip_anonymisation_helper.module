@@ -4,5 +4,5 @@
  * Implements hook_page_attachments().
  */
 function ip_anonymisation_helper_page_attachments(array &$page) {
-  $page['#attached']['library'][] = 'ip_anonymisation_helper/ip_anonymisation_helper';
+  $page['#attached']['library'][] = 'ip_anonymisation_helper/client_ip_fetcher';
 }
