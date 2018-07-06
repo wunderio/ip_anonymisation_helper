@@ -4,4 +4,4 @@ client_ip_fetcher:
     js/client_ip_fetcher.js: {}
   dependencies:
     - core/jquery
-    - core/drupalSettings
+    - core/drupal
