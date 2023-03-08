@@ -2,4 +2,4 @@ name: IP Anonymisation Helper
 description: Exposes the client IP.
 package: Custom
 type: module
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^8 || ^9 || ^10
