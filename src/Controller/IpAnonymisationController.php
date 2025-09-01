@@ -43,7 +43,7 @@ class IpAnonymisationController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('config.factory')->get('ip_anonymisation_helper.settings'),
       $container->get('request_stack')->getCurrentRequest()
@@ -53,7 +53,7 @@ class IpAnonymisationController extends ControllerBase {
   /**
    * Returns a client ip.
    */
-  public function getClientIp() {
+  public function getClientIp(): JsonResponse {
     // Only expose the client IP if it's enabled.
     $expose_client_ip = $this->config->get('expose_client_ip');
     if ($expose_client_ip == TRUE) {
